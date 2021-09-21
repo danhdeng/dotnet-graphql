@@ -21,3 +21,12 @@ dotnet add package GraphQL.Server.Ui.Voyager --version 5.0.2
 
 docker-compose up -d 
 docker-compose stop
+
+# install dotnet ef cli
+
+dotnet tool install --global dotnet-ef
+dotnet ef 
+Commands:
+  database    Commands to manage the database.
+  dbcontext   Commands to manage DbContext types.
+  migrations  Commands to manage migrations.

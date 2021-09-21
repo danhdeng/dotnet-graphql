@@ -1,3 +1,4 @@
+using CommanderGraphql.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommanderGraphql.Data
@@ -7,5 +8,7 @@ namespace CommanderGraphql.Data
         public AppDbContext(DbContextOptions options): base(options){
      
         }
+
+        public DbSet<Platform> Platforms { get; set; }
     }
 }
