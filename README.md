@@ -30,3 +30,38 @@ Commands:
   database    Commands to manage the database.
   dbcontext   Commands to manage DbContext types.
   migrations  Commands to manage migrations.
+
+# generate the Migrations
+dotnet ef migrations add {migrations name}
+
+# To undo this action, use 'ef migrations remove'
+dotnet ef migrations remove
+
+# apply the migrations
+
+dotnet ef database update
+
+# add grpahql endpoint to Project
+
+endpoints.MapGraphQL();
+
+# setup the graphql voyager
+  app.UseGraphQLVoyager(new GraphQL.Server.Ui.Voyager.VoyagerOptions()
+            {
+                GraphQLEndPoint = "/graphql",
+            }, "/graphql-voyager");
+
+# to access the graphql voyager
+
+http://localhost:5000/graphql-voyager
+
+# to solove the parallel request issue in graphql
+in startup
+services.AddPooledDbContextFactory<AppDbContext>(opts=>opts.UseSqlServer(
+                _configuration.GetConnectionString("CommandConn")));
+
+in Query
+ [UseDbContext(typeof(AppDbContext))]
+        public IQueryable<Platform> GetPlatform([ScopedService] AppDbContext context){
+            return context.Platforms;
+        }
