@@ -65,3 +65,39 @@ in Query
         public IQueryable<Platform> GetPlatform([ScopedService] AppDbContext context){
             return context.Platforms;
         }
+
+# add filter to query in graphql
+
+query{
+  command (where: {platformId: {eq: 1}})
+  {
+    id,
+    howTo
+    commandLine,
+    platform{
+      name
+    }
+  }
+}
+
+# add sorting to query in graphql
+
+query {
+  platform (order: {name: DESC}){
+    name
+  }
+}
+
+# mutation to add platform to db in graphql
+mutation{
+  addPlatform(
+    input: {
+      name: "test"
+    }
+  ){ platform
+  {
+    id
+    name
+  }
+  }
+}

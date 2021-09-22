@@ -10,7 +10,7 @@ namespace CommanderGraphql.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string name { get; set; }
+        public string Name { get; set; }
         [GraphQLDescription("Represents a purchased and valid lisence for platoform")]
         public string LisenceKey { get; set; }
         public ICollection<Command> Commands { get; set; } = new List<Command>();

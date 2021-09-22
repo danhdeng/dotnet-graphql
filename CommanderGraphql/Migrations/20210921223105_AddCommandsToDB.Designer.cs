@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommanderGraphql.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210921162220_AddCommandsToDB")]
+    [Migration("20210921223105_AddCommandsToDB")]
     partial class AddCommandsToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

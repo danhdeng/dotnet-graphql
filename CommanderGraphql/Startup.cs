@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GraphQL.Server.Ui.Voyager;
+using CommanderGraphql.GraphQL.Platforms;
 
 namespace CommanderGraphql
 {
@@ -26,7 +27,12 @@ namespace CommanderGraphql
                 _configuration.GetConnectionString("CommandConn")));
             services.AddGraphQLServer()
                     .AddQueryType<Query>()
-                    .AddProjections();
+                    .AddType<PlatformType>()
+                    .AddType<CommanderGraphql.GraphQL.Commands.CommandType>()
+                    .AddFiltering()
+                    .AddSorting()
+                    .AddMutationType<Mutation>();
+                    // .AddProjections();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
