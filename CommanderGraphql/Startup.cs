@@ -31,7 +31,9 @@ namespace CommanderGraphql
                     .AddType<CommanderGraphql.GraphQL.Commands.CommandType>()
                     .AddFiltering()
                     .AddSorting()
-                    .AddMutationType<Mutation>();
+                    .AddMutationType<Mutation>()
+                    .AddSubscriptionType<Subscription>()
+                    .AddInMemorySubscriptions();
                     // .AddProjections();
         }
 
@@ -42,6 +44,7 @@ namespace CommanderGraphql
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseWebSockets();
 
             app.UseRouting();
 

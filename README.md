@@ -89,6 +89,7 @@ query {
 }
 
 # mutation to add platform to db in graphql
+
 mutation{
   addPlatform(
     input: {
@@ -99,5 +100,30 @@ mutation{
     id
     name
   }
+  }
+}
+
+# mutation to add command to db in graphql
+
+mutation{
+  addCommand(input:{
+    howTo: "docker create image",
+    commandLine:"docker build -t imagneName ."
+    platformId: 2
+  }){
+    command{
+      id,
+      howTo
+      commandLine
+    }
+  }
+}
+
+# subscription to monitor the add platform method in graphql
+
+subscription{
+  onPlatformAdded{
+    id
+    name
   }
 }
